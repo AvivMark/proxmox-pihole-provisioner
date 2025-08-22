@@ -31,7 +31,6 @@ resource "null_resource" "post_create_commands" {
   provisioner "local-exec" {
     command = <<EOT
     echo "LXC container created: ${proxmox_lxc.lxc-pihole.hostname}"
-    # Place your post-creation commands here, for example:
     ssh root@${proxmox_lxc.lxc-pihole.network[0].ip} "apt update && apt install -y curl"
     EOT
   }
